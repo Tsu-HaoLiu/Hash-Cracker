@@ -1,4 +1,4 @@
-# builtin imports
+# builtin
 import sys
 import hashlib
 import string as st
@@ -34,13 +34,14 @@ def bruteforce_hash(hashed_string: str, hash_type: str = None, min_length: int =
         count += 1
     return None
 
-def wordlist_hash(hashed_string: str, wordlist: str, hash_type: str = None) -> str | None:
+def wordlist_hash(hashed_string: str, hash_type: str, wordlist: str) -> str | None:
     """Crack a hash using a wordlist.
     :param hashed_string: Hash looking to be cracked
     :param wordlist: Path to the wordlist
     :param hash_type: Type of hash used
     :return: (string | None) Cracked hash
     """
+    hash_type = hash_type.lower()
     hash_func = getattr(hashlib, hash_type, None)
     if hash_func is None or hash_type not in hashlib.algorithms_guaranteed:
         # unsupported hash type
@@ -55,7 +56,7 @@ def wordlist_hash(hashed_string: str, wordlist: str, hash_type: str = None) -> s
         # iterate over each line
         for line in tqdm(f, desc='Cracking hash', total=total_lines):
             if hash_func(line.strip().encode()).hexdigest() == hashed_string:
-                return line
+                return line.strip()
     return None
 
 def arg_parser():
@@ -104,13 +105,14 @@ def arg_parser():
 
 
 if __name__ == '__main__':
-    if len(sys.argv) > 1:
-        arg_parser()
-    else:
-        # hashname = '5ac2ac5ba94dbce933c6719ca250bf1752d938f43367af6618ab9e9e30b57df701dcda95287c5af56d8374abf292813efa07e1f287b9e4877ff17969b6735fe1'
-        hashname = 'd8022f2060ad6efd297ab73dcc5355c9b214054b0d1776a136a669d26a7d3b14f73aa0d0ebff19ee333368f0164b6419a96da49e3e481753e7e96b716bdccb6f'
-        named = wordlist_hash(hashname, 'Wordlist.txt', 'sha512')
-        print("[+] Found password:", named)
-        named = bruteforce_hash(hashname, 'sha512')
-        print("[+] Found password:", named)
+    arg_parser()
+    # if len(sys.argv) > 1:
+    #     arg_parser()
+    # else:
+    #     # hashname = '5ac2ac5ba94dbce933c6719ca250bf1752d938f43367af6618ab9e9e30b57df701dcda95287c5af56d8374abf292813efa07e1f287b9e4877ff17969b6735fe1'
+    #     hashname = 'd8022f2060ad6efd297ab73dcc5355c9b214054b0d1776a136a669d26a7d3b14f73aa0d0ebff19ee333368f0164b6419a96da49e3e481753e7e96b716bdccb6f'
+    #     named = wordlist_hash(hashname, 'Wordlist.txt', 'sha512')
+    #     print("[+] Found password:", named)
+    #     named = bruteforce_hash(hashname, 'sha512')
+    #     print("[+] Found password:", named)
 
