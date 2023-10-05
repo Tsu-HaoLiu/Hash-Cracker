@@ -1,5 +1,4 @@
 # builtin
-import sys
 import hashlib
 import string as st
 import itertools
@@ -106,13 +105,5 @@ def arg_parser():
 
 if __name__ == '__main__':
     arg_parser()
-    # if len(sys.argv) > 1:
-    #     arg_parser()
-    # else:
-    #     # hashname = '5ac2ac5ba94dbce933c6719ca250bf1752d938f43367af6618ab9e9e30b57df701dcda95287c5af56d8374abf292813efa07e1f287b9e4877ff17969b6735fe1'
-    #     hashname = 'd8022f2060ad6efd297ab73dcc5355c9b214054b0d1776a136a669d26a7d3b14f73aa0d0ebff19ee333368f0164b6419a96da49e3e481753e7e96b716bdccb6f'
-    #     named = wordlist_hash(hashname, 'Wordlist.txt', 'sha512')
-    #     print("[+] Found password:", named)
-    #     named = bruteforce_hash(hashname, 'sha512')
-    #     print("[+] Found password:", named)
+
 
