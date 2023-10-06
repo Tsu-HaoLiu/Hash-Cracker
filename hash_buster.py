@@ -16,7 +16,6 @@ def bruteforce_hash(hashed_string: str, hash_type: str = None, min_length: int =
     :return: (string | None) Cracked hash
     """
     word_list: str = st.digits + st.ascii_letters + st.punctuation  # string of possible characters
-    placeholder_hash = ''
     count = min_length
     hash_func = getattr(hashlib, hash_type, None)
 
@@ -24,7 +23,7 @@ def bruteforce_hash(hashed_string: str, hash_type: str = None, min_length: int =
     while count < max_length:
         total_chars = pow(len(word_list), count)  # Get the total number of possible combinations
         for letter in tqdm(itertools.product(word_list, repeat=count), desc=f'Bruteforcing hash #{count}', total=total_chars):
-            word = placeholder_hash.join(letter)
+            word = ''.join(letter)
 
             # validate hash then return the correct string
             if hash_func(word.encode()).hexdigest() == hashed_string:
@@ -105,5 +104,3 @@ def arg_parser():
 
 if __name__ == '__main__':
     arg_parser()
-
-
