@@ -13,12 +13,11 @@ public static class Globals {
         "sha512"
     };
 
-    public static readonly string ValidLetters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!\"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~";
-
+    public static readonly string ValidChar = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!\"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~";
 }
 
 
-public static class HashCracker {
+public static class HashBuster {
     static string CalculateHash(string input, string hashType) {
         var algorithm = HashAlgorithm.Create(hashType) ?? 
             throw new ArgumentException($"[!] Hash algorithm {hashType} is not supported.");
@@ -53,7 +52,7 @@ public static class HashCracker {
         var itertools = new Itertools();
 
         while (count < maxLength) {
-            foreach (var letter in itertools.Product(Globals.ValidLetters, repeat: count)) {
+            foreach (var letter in itertools.Product(Globals.ValidChar, repeat: count)) {
                 string joinedString  = string.Join("", letter);
                 
                 if (CalculateHash(joinedString, hashType) == hashedString) 
@@ -86,7 +85,7 @@ namespace QuickStart {
 
         static void Main(string[] args) {
             Parser.Default.ParseArguments<Options>(args).WithParsed<Options>( arg => {
-                string pw = arg.Bruteforce ? HashCracker.BruteforceHash(arg.HashedString, arg.HashedType) : HashCracker.WordlistHash(arg.HashedString, arg.HashedType, arg.Wordlist);
+                string pw = arg.Bruteforce ? HashBuster.BruteforceHash(arg.HashedString, arg.HashedType) : HashBuster.WordlistHash(arg.HashedString, arg.HashedType, arg.Wordlist);
 
                 if (pw.Length > 0) {
                     Console.WriteLine($"[+] Found password: {pw}");
