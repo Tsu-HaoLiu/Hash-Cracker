@@ -1,11 +1,37 @@
-# Python-Hash-Cracker
+# Hash-Cracker
 Advanced Hash Cracking Tool with support for Bruteforce Attacks, Dictionary Attacks
 
 
-[Can find rock you txt file here](https://github.com/danielmiessler/SecLists/tree/master/Passwords)
+[Can find rockyou txt file here](https://github.com/danielmiessler/SecLists/tree/master/Passwords)
 
 
-### CLI usage:
+### C# CLI usage:
+```
+> HashBuster.exe --help
+HashBuster 2023.10.3
+Copyright (C) 2023 HashBuster
+
+  -s, --hashedString    Required. Hash you are looking to crack
+
+  -t, --hashedType      Required. (Default: md5) Type of hash used
+
+  -w, --wordlist        (Default: rockyou.txt) Path of wordlist (e.g.
+                        C:\Downloads\rockyou.txt)
+
+  -b, --bruteforce      (Default: false) Option to bruteforce the hash
+
+  --help                Display this help screen.
+
+```
+
+Example:
+```
+> HashBuster.exe -s 0f359740bd1cda994f8b55330c86d845 -t md5 -w rockyou.txt
+[*] Cracking hash 0f359740bd1cda994f8b55330c86d845 using [md5] with a list of 999 words.
+[+] Found password: p@ssw0rd
+```
+
+### Python CLI usage:
 ```python
 python hash_buster.py -s HASHED_STRING [-w WORDLIST] [-type HASH_TYPE] [-b]
 

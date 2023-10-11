@@ -47,7 +47,7 @@ public static class HashBuster {
         return "";
     }
 
-    public static string BruteforceHash(string hashedString, string hashType, int minLength = 2, int maxLength = 4) {
+    public static string BruteforceHash(string hashedString, string hashType, int minLength = 1, int maxLength = 7) {
         int count = minLength;
         var itertools = new Itertools();
 
