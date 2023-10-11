@@ -67,13 +67,13 @@ def arg_parser():
         '--hashed_string',
         type=str,
         required=True,
-        help=f'The hash you are looking to crack'
+        help='The hash you are looking to crack'
     )
     parse.add_argument(
         '-w',
         '--wordlist',
         type=str,
-        help=f'Path of wordlist (e.g. C:\\Downloads\\rockyou.txt)'
+        help='Path of wordlist (e.g. C:\\Downloads\\rockyou.txt)'
     )
     parse.add_argument(
         '-type',
@@ -104,13 +104,3 @@ def arg_parser():
 
 if __name__ == '__main__':
     arg_parser()
-    # # if len(sys.argv) > 1:
-    # #     arg_parser()
-    # # else:
-    # # hashname = '5ac2ac5ba94dbce933c6719ca250bf1752d938f43367af6618ab9e9e30b57df701dcda95287c5af56d8374abf292813efa07e1f287b9e4877ff17969b6735fe1'
-    # hashname = '314c294196e1d54fcf4612ae1ad7ea62'
-    # # named = wordlist_hash(hashname, 'Wordlist.txt', 'sha512')
-    # # print("[+] Found password:", named)
-    # named = bruteforce_hash(hashname, 'md5')
-    # print("[+] Found password:", named)
-
