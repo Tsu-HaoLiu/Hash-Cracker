@@ -32,21 +32,21 @@ Example:
 ```
 
 ## Library usage:
-```python
-from hash_buster import bruteforce_hash, wordlist_hash
+```csharp
+using static HashBuster;
 
-hash_string = 'fbc74209d6c21fd434df...'
-hash_type = 'sha256'
-min_length = 1
-max_length = 4
-unhashed_string = bruteforce_hash(hash_string, hash_type, min_length, max_length)
-print(unhashed_string) 
+string hash = "3e52b22ebfaa4ec...";
+string hashType = "md5";
+int minLength = 1;
+int maxLength = 5;
+var crackedHash = HashBuster.BruteforceHash(hash, hashType, minLength, maxLength);
+Console.WriteLine(crackedHash);
 
 # ----------------
 
-hash_string = '5ac2ac5ba94dbce933c671...'
-hash_type = 'sha512'
-file_path = 'rockyou.txt'
-unhashed_string = wordlist_hash(hash_string, hash_type, file_path)
-print(unhashed_string) 
+string hash = "a075d17f3d453073853f...";
+string hashType = "sha256";
+string filePath = "rockyou.txt";
+var crackedHash = WordlistHash(hash, hashType, filePath);
+Console.WriteLine(crackedHash);
 ```
