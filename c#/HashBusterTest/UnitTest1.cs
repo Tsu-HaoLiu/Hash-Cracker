@@ -3,9 +3,9 @@ using Xunit;
 
 using static HashBuster;
 
-namespace TDD.xUnit.net.Client  {
+namespace TDD.xUnit.net.Client {
 
-    public class UnitTest1 {
+    public class HashBusterTest {
 
         [Fact]
         public void WordlistHashTest() {
@@ -28,7 +28,7 @@ namespace TDD.xUnit.net.Client  {
         }
 
         [Fact]
-        public void test2() {
+        public void BruteforceHashTest() {
             string hash = "3e52b22ebfaa4ecd02fe6e4d8fecf9f0";
             string hashType = "md5";
             int minLength = 3;
