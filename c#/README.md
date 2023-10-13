@@ -47,6 +47,6 @@ Console.WriteLine(crackedHash);
 string hash = "a075d17f3d453073853f...";
 string hashType = "sha256";
 string filePath = "rockyou.txt";
-var crackedHash = WordlistHash(hash, hashType, filePath);
+var crackedHash = HashBuster.WordlistHash(hash, hashType, filePath);
 Console.WriteLine(crackedHash);
 ```
