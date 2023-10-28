@@ -1,4 +1,4 @@
-# Hash-Cracker
+# Hash Decryptor 
 Advanced Hash Cracking Tool with support for Bruteforce Attacks, Dictionary Attacks
 
 
